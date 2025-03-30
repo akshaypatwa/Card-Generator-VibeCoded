@@ -53,14 +53,15 @@ const Card: React.FC<CardProps> = ({ card, onEdit, onDelete }) => {
 
   return (
     // Add perspective for 3D effect and move hover effect here
-    <div className="group animate-fadeIn [perspective:1000px] transition-transform duration-300 hover:-translate-y-2">
+    // Add shiny green drop shadow filter
+    <div className="group animate-fadeIn [perspective:1000px] transition-transform duration-300 hover:-translate-y-2 [filter:drop-shadow(0_6px_4px_rgba(50,205,50,0.5))_drop-shadow(0_10px_10px_rgba(60,179,113,0.3))] hover:[filter:drop-shadow(0_8px_6px_rgba(50,205,50,0.6))_drop-shadow(0_12px_12px_rgba(60,179,113,0.4))]">
       {/* Container for the transform and preserving 3D - Apply dynamic height */}
       <div
         className={`relative transform transition-all duration-700 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''}`}
         style={{ height: `${containerHeight}px` }} // Apply calculated height
       >
         {/* Front Face - Re-add absolute */}
-        <div className="absolute w-full h-full [backface-visibility:hidden] bg-gradient-to-br from-white via-white to-gray-50 rounded-2xl overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+        <div className="absolute w-full h-full [backface-visibility:hidden] bg-gradient-to-br from-white via-white to-gray-50 rounded-2xl overflow-hidden transition-shadow duration-300">
           {/* Priority gradient banner */}
           <div className={`h-2 bg-gradient-to-r ${priorityColors[card.priority]}`} />
           
@@ -166,7 +167,7 @@ const Card: React.FC<CardProps> = ({ card, onEdit, onDelete }) => {
         </div>
 
         {/* Back Face - Already absolute */}
-        <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-gray-700 to-gray-900 rounded-2xl overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow duration-300 text-white">
+        <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-gray-700 to-gray-900 rounded-2xl overflow-hidden transition-shadow duration-300 text-white">
           {/* Inner content div for measuring */}
           <div ref={backRef} className="p-6 h-full flex flex-col"> 
             <div className="flex justify-between items-start mb-4">
