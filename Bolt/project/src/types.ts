@@ -6,6 +6,7 @@ export interface CardData {
   createdAt: string;
   tags: string[];
   details?: string; // Added optional details field
+  label?: string;
 }
 
 export interface CardCollection {

@@ -2,6 +2,114 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Theme Variables */
+/* Moved outside @layer base */
+:root {
+  /* Default: ServiceNow Green */
+  --bg-gradient-start: theme('colors.green.800');
+    --bg-gradient-via: theme('colors.gray.900');
+    --bg-gradient-end: theme('colors.black');
+    --header-text-color: theme('colors.white');
+    --subheader-text-color: theme('colors.gray.300');
+    --card-count-text-color: theme('colors.gray.200');
+    --card-shadow-color-1: rgba(50, 205, 50, 0.5); /* Lime Green */
+    --card-shadow-color-2: rgba(60, 179, 113, 0.3); /* Medium Sea Green */
+    --card-shadow-hover-color-1: rgba(50, 205, 50, 0.6);
+    --card-shadow-hover-color-2: rgba(60, 179, 113, 0.4);
+    --button-primary-start: theme('colors.green.600'); /* #43A047 */
+    --button-primary-end: theme('colors.green.800'); /* #2E7D32 */
+    --button-primary-hover-start: theme('colors.green.800'); /* #2E7D32 */
+    --button-primary-hover-end: theme('colors.green.900'); /* #1B5E20 */
+    --priority-low-start: theme('colors.emerald.400');
+    --priority-low-end: theme('colors.green.600'); /* #43A047 */
+    --priority-medium-start: theme('colors.green.600'); /* #43A047 */
+    --priority-medium-end: theme('colors.green.800'); /* #2E7D32 */
+    --priority-high-start: theme('colors.green.800'); /* #2E7D32 */
+    --priority-high-end: theme('colors.teal.900'); /* #004D40 */
+    --tag-start: theme('colors.green.600'); /* #43A047 */
+    --tag-end: theme('colors.green.800'); /* #2E7D32 */
+    --icon-color: theme('colors.green.600'); /* #43A047 */
+  }
+
+  html[data-theme='youtube'] :root {
+    --bg-gradient-start: #c4302b; /* YouTube Red Darker */
+    --bg-gradient-via: #400000; 
+    --bg-gradient-end: #000000;
+    --header-text-color: theme('colors.white');
+    --subheader-text-color: theme('colors.gray.300');
+    --card-count-text-color: theme('colors.gray.200');
+    --card-shadow-color-1: rgba(255, 0, 0, 0.5); /* Red */
+    --card-shadow-color-2: rgba(170, 0, 0, 0.3); /* Darker Red */
+    --card-shadow-hover-color-1: rgba(255, 0, 0, 0.6);
+    --card-shadow-hover-color-2: rgba(170, 0, 0, 0.4);
+    --button-primary-start: #FF0000; /* Red */
+    --button-primary-end: #c4302b; 
+    --button-primary-hover-start: #c4302b;
+    --button-primary-hover-end: #a00000;
+    --priority-low-start: theme('colors.red.400');
+    --priority-low-end: #FF0000; 
+    --priority-medium-start: #FF0000;
+    --priority-medium-end: #c4302b;
+    --priority-high-start: #c4302b;
+    --priority-high-end: #a00000;
+    --tag-start: #FF0000;
+    --tag-end: #c4302b;
+    --icon-color: #FF0000;
+  }
+
+  html[data-theme='facebook'] :root {
+    --bg-gradient-start: #1877F2; /* Facebook Blue */
+    --bg-gradient-via: #083d8d;
+    --bg-gradient-end: #000000;
+    --header-text-color: theme('colors.white');
+    --subheader-text-color: theme('colors.gray.300');
+    --card-count-text-color: theme('colors.gray.200');
+    --card-shadow-color-1: rgba(24, 119, 242, 0.5); /* FB Blue */
+    --card-shadow-color-2: rgba(10, 80, 180, 0.3); /* Darker FB Blue */
+    --card-shadow-hover-color-1: rgba(24, 119, 242, 0.6);
+    --card-shadow-hover-color-2: rgba(10, 80, 180, 0.4);
+    --button-primary-start: #1877F2;
+    --button-primary-end: #0b5fcc;
+    --button-primary-hover-start: #0b5fcc;
+    --button-primary-hover-end: #083d8d;
+    --priority-low-start: theme('colors.blue.400');
+    --priority-low-end: #1877F2;
+    --priority-medium-start: #1877F2;
+    --priority-medium-end: #0b5fcc;
+    --priority-high-start: #0b5fcc;
+    --priority-high-end: #083d8d;
+    --tag-start: #1877F2;
+    --tag-end: #0b5fcc;
+    --icon-color: #1877F2;
+  }
+  
+  html[data-theme='snapchat'] :root {
+    --bg-gradient-start: #FFFC00; /* Snapchat Yellow */
+    --bg-gradient-via: #bfa500;
+    --bg-gradient-end: #000000;
+    --header-text-color: theme('colors.black'); /* Yellow needs dark text */
+    --subheader-text-color: theme('colors.gray.700');
+    --card-count-text-color: theme('colors.gray.800');
+    --card-shadow-color-1: rgba(255, 252, 0, 0.6); /* Yellow */
+    --card-shadow-color-2: rgba(218, 165, 32, 0.4); /* Gold-ish */
+    --card-shadow-hover-color-1: rgba(255, 252, 0, 0.7);
+    --card-shadow-hover-color-2: rgba(218, 165, 32, 0.5);
+    --button-primary-start: #FFFC00;
+    --button-primary-end: #e6e300;
+    --button-primary-hover-start: #e6e300;
+    --button-primary-hover-end: #bfa500;
+    --priority-low-start: theme('colors.yellow.300');
+    --priority-low-end: #FFFC00;
+    --priority-medium-start: #FFFC00;
+    --priority-medium-end: #e6e300;
+    --priority-high-start: #e6e300;
+    --priority-high-end: #bfa500;
+    --tag-start: #FFFC00;
+    --tag-end: #e6e300;
+    --icon-color: #bfa500; /* Darker yellow for icons */
+  }
+/* End of moved variables */
+
 /* Add custom utilities for card flip */
 @layer utilities {
   .perspective {

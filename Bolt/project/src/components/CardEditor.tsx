@@ -14,7 +14,8 @@ const CardEditor: React.FC<CardEditorProps> = ({ onSave, onClose, initialData })
     description: initialData?.description || '',
     priority: initialData?.priority || 'low',
     tags: initialData?.tags || [],
-    details: initialData?.details || '' // Added details state
+    details: initialData?.details || '', // Added details state
+    label: initialData?.label || '',
   });
   const [tagInput, setTagInput] = useState('');
 
@@ -35,8 +36,8 @@ const CardEditor: React.FC<CardEditorProps> = ({ onSave, onClose, initialData })
   };
 
   return (
-    <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 w-full max-w-md shadow-2xl">
-      <div className="flex justify-between items-center mb-8">
+    <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 w-full max-w-md shadow-2xl overflow-y-auto max-h-[80vh]">
+      <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl font-bold bg-gradient-to-r from-[#2E7D32] to-[#43A047] bg-clip-text text-transparent">
           {initialData ? 'Edit Card' : 'New Card'}
         </h2>
@@ -48,7 +49,7 @@ const CardEditor: React.FC<CardEditorProps> = ({ onSave, onClose, initialData })
         </button>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block text-gray-700 font-medium mb-2">
             Topic
@@ -61,7 +62,39 @@ const CardEditor: React.FC<CardEditorProps> = ({ onSave, onClose, initialData })
               focus:outline-none focus:ring-2 focus:ring-[#43A047] focus:ring-opacity-50
               text-gray-700 placeholder-gray-400
               border border-gray-200 shadow-sm"
-            placeholder="Enter topic..."
+            placeholder="Enter additional details..."
+          />
+        </div>
+
+        <div>
+          <label className="block text-gray-700 font-medium mb-2">
+            Label
+          </label>
+          <input
+            type="text"
+            value={formData.label}
+            onChange={(e) => setFormData({ ...formData, label: e.target.value })}
+            className="w-full px-4 py-3 bg-white rounded-xl
+              focus:outline-none focus:ring-2 focus:ring-[#43A047] focus:ring-opacity-50
+              text-gray-700 placeholder-gray-400
+              border border-gray-200 shadow-sm"
+            placeholder="Enter label..."
+          />
+        </div>
+
+        <div>
+          <label className="block text-gray-700 font-medium mb-2">
+            Description
+          </label>
+          <textarea
+            value={formData.description}
+            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+            className="w-full px-4 py-3 bg-white rounded-xl
+              focus:outline-none focus:ring-2 focus:ring-[#43A047] focus:ring-opacity-50
+              text-gray-700 placeholder-gray-400
+              border border-gray-200 shadow-sm"
+            rows={1}
+            placeholder="Enter description..."
             required
           />
         </div>
@@ -79,23 +112,6 @@ const CardEditor: React.FC<CardEditorProps> = ({ onSave, onClose, initialData })
               border border-gray-200 shadow-sm"
             rows={3}
             placeholder="Enter additional details..."
-          />
-        </div>
-
-        <div>
-          <label className="block text-gray-700 font-medium mb-2">
-            Description
-          </label>
-          <textarea
-            value={formData.description}
-            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-            className="w-full px-4 py-3 bg-white rounded-xl
-              focus:outline-none focus:ring-2 focus:ring-[#43A047] focus:ring-opacity-50
-              text-gray-700 placeholder-gray-400
-              border border-gray-200 shadow-sm"
-            rows={4}
-            placeholder="Enter description..."
-            required
           />
         </div>
 
@@ -171,7 +187,7 @@ const CardEditor: React.FC<CardEditorProps> = ({ onSave, onClose, initialData })
           </div>
         </div>
 
-        <div className="flex justify-end space-x-4 pt-6">
+        <div className="flex justify-end space-x-4 pt-4">
           <button
             type="button"
             onClick={onClose}
