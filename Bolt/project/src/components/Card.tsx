@@ -66,7 +66,7 @@ const Card: React.FC<CardProps> = ({ card, onEdit, onDelete }) => {
           {/* Priority gradient banner - Use CSS Variable */}
           <div className={`h-1 bg-gradient-to-r ${priorityGradientVars[card.priority]}`} />
           {/* Label at top right corner */}
-          <div className={`absolute top-0 right-0 h-6 px-2 bg-gradient-to-br ${priorityGradientVars[card.priority]} text-white rounded-bl-xl [filter:drop-shadow(-2px_2px_2px_rgba(0,0,0,0.5))] group-hover:opacity-50 transition-opacity duration-200`}>
+          <div className={`absolute top-0 right-0 h-6 px-2 bg-gradient-to-br ${priorityGradientVars[card.priority]} text-white rounded-bl-xl font-normal [filter:drop-shadow(-2px_2px_2px_rgba(0,0,0,0.5))] group-hover:opacity-50 transition-opacity duration-200`}>
             {card.label}
           </div>
           <div ref={frontRef} className="p-4">
